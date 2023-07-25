@@ -26,7 +26,7 @@ def pixelado(x, y, img, px_size):
 model = YOLO("yolov8n-seg.pt")
 
 #Abrimos la imagen que queremos segmentar
-im1 = Image.open("manifestacion.jpg")
+im1 = Image.open("Imagenes/manifestacion.jpg")
 
 #Obtenemos los resultados de la segmentación
 results = model.predict(source=im1, save=False, save_txt=False)
@@ -65,7 +65,18 @@ for resultado in results:
         #Reescalado de la mascara
         mask = mask.resize((512, 512))
         #Imagen procesada
-        im1 = pipe(prompt=prompt, image=im1, mask_image=mask).images[0]
+        imagenProcesada = pipe(prompt=prompt, image=im1, mask_image=mask).images[0]
+
+        #Prueba
+        pixels = im1.load()
+        pixelsMask = mask.load()
+        pixelsImagenP = imagenProcesada.load()
+        for y in range(512):
+            for x in range(512):
+                print(pixelsMask[x, y])
+                if pixelsMask[x, y] != 0:
+                    pixels[x, y] = pixelsImagenP[x, y]
+        im1.save("./imagen procesadaPrueba.png")
 
 #Guardado de la imagen procesada
 im1.save("./imagen procesada.png")

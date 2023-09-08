@@ -27,13 +27,13 @@ def borrar_archivos(carpeta):
 def leer_archivos():
     #Obtención de los ficheros del proyecto e imagenes
     carpeta_principal = os.path.dirname(__file__)
-    carpeta_imagenes = carpeta_principal + "/Imagenes"
-    carpeta_destino = carpeta_principal + "/Imagenes procesadas"
+    carpeta_imagenes = carpeta_principal + "\\Imagenes"
+    carpeta_destino = carpeta_principal + "\\Imagenes procesadas"
     try:
         for linea in os.listdir(carpeta_imagenes):
             name = linea.split(".")
-            orig = carpeta_imagenes + "/" + linea
-            dest = carpeta_destino + "/" + name[0] + " procesada.png"
+            orig = carpeta_imagenes + "\\" + linea
+            dest = carpeta_destino + "\\" + name[0] + " procesada.png"
             img = Anonimizador.anonimizacion(orig, 0, dest, "robot standing on their feet")
             img.show()
     except:

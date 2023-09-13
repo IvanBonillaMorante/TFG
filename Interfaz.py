@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import filedialog
 import os
 import shutil
-import Anonimizador
+from Anonimizador import Anonimizador
 
 
 
@@ -38,7 +38,7 @@ def leer_archivos():
             img.show()
     except:
         print("Archivo no correcto")
-        #borrar_archivos(carpeta_imagenes)
+        borrar_archivos(carpeta_imagenes)
         exit(1)
 
 #Obtención de los ficheros del proyecto e imagenes

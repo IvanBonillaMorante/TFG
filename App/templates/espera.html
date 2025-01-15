@@ -1,0 +1,9 @@
+{% extends './layout.html' %}
+
+{% block title %}Página de espera{% endblock %}
+
+{% block link %} <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> {% endblock %}
+
+{% block body %}
+   <h>Esperando que se procese la imagen</h>
+{% endblock %}

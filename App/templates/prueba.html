@@ -1,0 +1,21 @@
+{% extends './layout.html' %}
+
+{% block title %}{{data.titulo}}{% endblock %}
+
+{% block link %} <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> {% endblock %}
+
+{% block body %}
+    <div id="html">
+        <div class ="drop-area" >
+          <h2>Arratra todas las imagenes que quieras procesar</h2>
+          <span>O</span>
+          <button>Selecciona tus archivos</button>
+          <input type="file" name="" id="input-file" hidden multiple />
+        </div>
+        <div>
+            <button id="enviar">Enviar fotos</button>
+        </div>
+        <div id="preview"></div>
+        <script src="index.js"></script>
+    </div>
+{% endblock %}

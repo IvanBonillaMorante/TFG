@@ -1,0 +1,53 @@
+{% extends './layout.html' %}
+
+{% block title %}{{data.titulo}}{% endblock %}
+
+{% block body %}
+    <h1>Agregar marca de agua a la imagen</h1>
+    <form id="formulario1" enctype="multipart/form-data">
+        <div>
+            <label for="texto">Texto de la marca de agua</label>
+            <input type="text" name="texto" id="texto">
+        </div>
+        <div>
+            <label for="imagen">Imagen:</label>
+            <input type="file" id="imagen" name="imagen" accept="image/jpeg">
+            <div id="imagenOriginal"></div>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+    <div id="resultado"></div>
+
+    <script>
+        const formulario1 = document.querySelector("#formulario1")
+        const resultado = document.querySelector("#resultado")
+        const imagenOriginal = document.querySelector("#imagenOriginal")
+
+        document.querySelector("#imagen").addEventListener("change", () => {
+            const archivo = document.querySelector("#imagen").files[0]
+            const urlDelObjeto = URL.createObjectURL(archivo)
+            const img = document.createElement('img')
+            img.src = urlDelObjeto
+            imagenOriginal.appendChild(img)
+        })
+
+        formulario1.addEventListener('submit', (event) =>{
+            event.preventDefault();
+
+            const datosFormulario = new FormData(formulario1)
+            fetch('http://127.0.0.1:6006/prueba3.html', {
+                method: 'POST',
+                body: datosFormulario
+            })
+                .then(respuesta => respuesta.blob())
+                .then(blob => {
+                    console.log("Success")
+                    const urlDelObjeto = URL.createObjectURL(blob)
+                    const img = document.createElement('img')
+                    img.src = urlDelObjeto
+                    resultado.appendChild(img)
+                })
+        })
+
+    </script>
+{% endblock %}

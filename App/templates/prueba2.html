@@ -1,0 +1,38 @@
+{% extends './layout.html' %}
+
+{% block title %}{{data.titulo}}{% endblock %}
+
+{% block body %}
+    <h2> Subida de varios archivos </h2>
+    <form id = "myform" enctype="multipart/form-data">
+        <p> Prueba subiendo 2 archivos </p>
+        <input type="file" id="file" multiple><br><br>
+        <button type="submit">Subir fotos</button>
+    </form>
+    <script>
+        document.getElementById('myform').addEventListener('submit', function(x){
+
+            x.preventDefault();
+
+            const myFile = document.getElementById('file').files[0];
+
+            const myData = new FormData();
+
+            myData.append("newFiles", myFile);
+
+            fetch("http://127.0.0.1:6006/prueba2.html", {
+
+                method: "POST",
+
+                body: myData
+            })
+                .then(response => response.blob())
+                .then(finalData => {
+                    console.log("Files has been uploaded successfully");
+                })
+                .catch(err=>{
+                    console.log("Error found:", err);
+                })
+        })
+    </script>
+{% endblock %}

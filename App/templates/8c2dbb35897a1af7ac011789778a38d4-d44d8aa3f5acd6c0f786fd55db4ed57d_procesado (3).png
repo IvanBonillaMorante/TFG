@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    
+</head>
+<body>
+    
+    <h1>¡Saludos!</h1>
+    
+    <ul>
+        
+        <li>PHP</li>
+        
+        <li>Pyhton</li>
+        
+        <li>Java</li>
+        
+        <li>Kotlin</li>
+        
+        <li>Dart</li>
+        
+        <li>JavaScript</li>
+        
+    </ul>
+    
+
+    <script src="/static/js/index.js"></script>
+</body>
+</html>

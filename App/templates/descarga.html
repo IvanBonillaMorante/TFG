@@ -1,0 +1,12 @@
+{% extends './layout.html' %}
+
+{% block title %}{{data.titulo}}{% endblock %}
+
+{% block body %}
+
+
+    <a class="boton" href="{{url_for('download')}}">
+        Download
+    </a>
+
+{% endblock %}

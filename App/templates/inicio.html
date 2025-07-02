@@ -1,0 +1,28 @@
+{% extends './layout.html' %}
+
+{% block title %}{{data.titulo}}{% endblock %}
+
+{% block link %} <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> {% endblock %}
+
+{% block body %}
+    <div id="html">
+        <div class ="drop-area" name="dropbox">
+            <h2>Arratra todas las imagenes que quieras procesar</h2>
+            <span>O</span>
+            <button>Selecciona tus archivos</button>
+            <input type="file" name="" id="input-file" hidden multiple />
+        </div>
+        <br/>
+        <label for="prompt">Escribe por lo que quieres sustituir a las personas</label>
+        <input type="text" id="prompt" name="prompt"><br/>
+        <label for="modo">Selecciona modelo de sustitución</label>
+        <select name="modo" id="modo">
+            <option value="0">Sustitución por elemento no discriminador</option>
+            <option value="1">Sustitución por figuras negras</option>
+            <option value="2">Pixelado</option>
+        </select><br/>
+        <button class="boton" id="enviar">Enviar fotos</button>
+        <div id="preview"></div>
+        <script src="index.js"></script>
+    </div>
+{% endblock %}

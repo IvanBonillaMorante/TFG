@@ -2,3 +2,5 @@
 *.jpg
 *.jpeg
 
+/processed_images/
+/masks/
